@@ -27,7 +27,7 @@ Follow these steps to deploy the cloud network architecture:
     ```
 2. Navigate to the cloned repository directory:
     ```bash
-    cd assignment1
+    cd terraform_aws_cloud_architecture
     ```
 3. Deploy development VPC network:
     ```bash
@@ -39,7 +39,7 @@ Follow these steps to deploy the cloud network architecture:
 4. Deploy development webserver:
     ```bash
     cd ../webservers
-    ssh-keygen -t rsa  -f assignment1
+    ssh-keygen -t rsa  -f devkeypair
     terraform init
     terraform plan
     terraform apply -auto-approve
@@ -54,7 +54,7 @@ Follow these steps to deploy the cloud network architecture:
 6. Deploy production webserver:
     ```bash
     cd ../webservers
-    ssh-keygen -t rsa  -f assignment1prod
+    ssh-keygen -t rsa  -f prodkeypair
     terraform init
     terraform plan
     terraform apply -auto-approve
@@ -67,3 +67,24 @@ Follow these steps to deploy the cloud network architecture:
     terraform plan
     terraform apply -auto-approve
     ```
+    
+    
+## Destruction Instructions
+
+To destroy the infrastructure and clean up all resources created, follow these steps:
+1. Navigate to each component directory and run Terraform destroy command:
+
+    ```bash
+    cd dev/webservers
+    terraform destroy -auto-approve
+    cd ../network
+    terraform destroy -auto-approve
+    cd ../../prod/webservers
+    terraform destroy -auto-approve
+    cd ../network
+    terraform destroy -auto-approve
+    cd ../../vpc_peering
+    terraform destroy -auto-approve
+    ```
+
+2. After destroying all components, you can optionally delete the S3 bucket and its contents used for storing Terraform state.
