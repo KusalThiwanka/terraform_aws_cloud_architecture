@@ -5,6 +5,12 @@
 *.tfstate
 *.tfstate.*
 
+# Ignore private and public key pair files recursively
+**/*.pem
+**/*.pub
+**/devkeypair
+**/prodkeypair
+
 # Crash log files
 crash.log
 crash.*.log
