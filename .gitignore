@@ -11,6 +11,8 @@
 **/devkeypair
 **/prodkeypair
 
+**/.terraform.*
+
 # Crash log files
 crash.log
 crash.*.log
