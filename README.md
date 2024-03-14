@@ -20,6 +20,16 @@ Before deploying the infrastructure using Terraform, ensure the following pre-re
 
 ## Deployment Instructions
 
+**Option 1: Automated Deployment using `deploy.sh`**:
+    - Ensure the `deploy.sh` script has execution permissions. If not, grant them using:
+        ```bash
+        chmod +x deploy.sh
+        ```
+    - Run the script to automate the deployment process:
+        ```bash
+        ./deploy.sh
+        ```
+**Option 2: Manual Deployment**:
 Follow these steps to deploy the cloud network architecture:
 1. Clone this repository to your local machine:
     ```bash
@@ -71,6 +81,16 @@ Follow these steps to deploy the cloud network architecture:
     
 ## Destruction Instructions
 
+**Option 1: Automated Destruction using `destroy.sh`**:
+    - Ensure the `destroy.sh` script has execution permissions. If not, grant them using:
+        ```bash
+        chmod +x destroy.sh
+        ```
+    - Run the script to automate the destruction process:
+        ```bash
+        ./destroy.sh
+        ```
+**Option 2: Manual Destruction**:
 To destroy the infrastructure and clean up all resources created, follow these steps:
 1. Navigate to each component directory and run Terraform destroy command:
 
