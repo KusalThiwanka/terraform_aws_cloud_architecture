@@ -75,15 +75,15 @@ To destroy the infrastructure and clean up all resources created, follow these s
 1. Navigate to each component directory and run Terraform destroy command:
 
     ```bash
-    cd dev/webservers
+    cd vpc_peering
+    terraform destroy -auto-approve
+    cd ../dev/webservers
     terraform destroy -auto-approve
     cd ../network
     terraform destroy -auto-approve
     cd ../../prod/webservers
     terraform destroy -auto-approve
     cd ../network
-    terraform destroy -auto-approve
-    cd ../../vpc_peering
     terraform destroy -auto-approve
     ```
 
