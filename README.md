@@ -20,6 +20,16 @@ Before deploying the infrastructure using Terraform, ensure the following pre-re
 
 ## Deployment Instructions
 
+Follow these steps to deploy the cloud network architecture:
+1. Clone this repository to your local machine:
+    ```bash
+    git clone https://github.com/KusalThiwanka/terraform_aws_cloud_architecture.git
+    ```
+2. Navigate to the cloned repository directory:
+    ```bash
+    cd terraform_aws_cloud_architecture
+    ```
+
 ### Option 1: Automated Deployment using `deploy.sh`
   - Ensure the `deploy.sh` script has execution permissions. If not, grant them using:
     ```bash
@@ -31,23 +41,14 @@ Before deploying the infrastructure using Terraform, ensure the following pre-re
     ```
 
 ### Option 2: Manual Deployment:
-Follow these steps to deploy the cloud network architecture:
-1. Clone this repository to your local machine:
-    ```bash
-    git clone https://github.com/KusalThiwanka/terraform_aws_cloud_architecture.git
-    ```
-2. Navigate to the cloned repository directory:
-    ```bash
-    cd terraform_aws_cloud_architecture
-    ```
-3. Deploy development VPC network:
+1. Deploy development VPC network:
     ```bash
     cd dev/network
     terraform init
     terraform plan
     terraform apply -auto-approve
     ```
-4. Deploy development webserver:
+2. Deploy development webserver:
     ```bash
     cd ../webservers
     ssh-keygen -t rsa  -f devkeypair
@@ -55,14 +56,14 @@ Follow these steps to deploy the cloud network architecture:
     terraform plan
     terraform apply -auto-approve
     ```
-5. Deploy the production network:
+3. Deploy the production network:
     ```bash
     cd ../../prod/network
     terraform init
     terraform plan
     terraform apply -auto-approve
     ```
-6. Deploy production webserver:
+4. Deploy production webserver:
     ```bash
     cd ../webservers
     ssh-keygen -t rsa  -f prodkeypair
@@ -70,7 +71,7 @@ Follow these steps to deploy the cloud network architecture:
     terraform plan
     terraform apply -auto-approve
     ```
-7. Run VPC peering connection:
+5. Run VPC peering connection:
 
     ```bash
     cd ../../vpc_peering
@@ -81,6 +82,8 @@ Follow these steps to deploy the cloud network architecture:
     
     
 ## Destruction Instructions
+
+To destroy the infrastructure and clean up all resources created, follow these steps:
 
 ### Option 1: Automated Destruction using `destroy.sh`:
   - Ensure the `destroy.sh` script has execution permissions. If not, grant them using:
@@ -93,9 +96,7 @@ Follow these steps to deploy the cloud network architecture:
     ```
 
 ### Option 2: Manual Destruction:
-To destroy the infrastructure and clean up all resources created, follow these steps:
 1. Navigate to each component directory and run Terraform destroy command:
-
     ```bash
     cd vpc_peering
     terraform destroy -auto-approve
@@ -109,4 +110,5 @@ To destroy the infrastructure and clean up all resources created, follow these s
     terraform destroy -auto-approve
     ```
 
-2. After destroying all components, you can optionally delete the S3 bucket and its contents used for storing Terraform state.
+
+After destroying all components, you can optionally delete the S3 bucket and its contents used for storing Terraform state.
