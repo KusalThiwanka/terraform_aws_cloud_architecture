@@ -41,14 +41,14 @@ Follow these steps to deploy the cloud network architecture:
     ```
 
 ### Option 2: Manual Deployment:
-1. Deploy development VPC network:
+1. Deploy Development Network:
     ```bash
     cd dev/network
     terraform init
     terraform plan
     terraform apply -auto-approve
     ```
-2. Deploy development webserver:
+2. Deploy Development Webservers
     ```bash
     cd ../webservers
     ssh-keygen -t rsa  -f devkeypair
@@ -56,14 +56,14 @@ Follow these steps to deploy the cloud network architecture:
     terraform plan
     terraform apply -auto-approve
     ```
-3. Deploy the production network:
+3. Deploy Production Network
     ```bash
     cd ../../prod/network
     terraform init
     terraform plan
     terraform apply -auto-approve
     ```
-4. Deploy production webserver:
+4. Deploy Production Webservers
     ```bash
     cd ../webservers
     ssh-keygen -t rsa  -f prodkeypair
@@ -71,12 +71,17 @@ Follow these steps to deploy the cloud network architecture:
     terraform plan
     terraform apply -auto-approve
     ```
-5. Run VPC peering connection:
-
+5. Deploy VPC Peering Connection
     ```bash
     cd ../../vpc_peering
     terraform init
     terraform plan
+    terraform apply -auto-approve
+    ```
+6. Deploy Application Load Balancer
+    ```bash
+    cd ../alb
+    terraform init
     terraform apply -auto-approve
     ```
     
@@ -96,19 +101,35 @@ To destroy the infrastructure and clean up all resources created, follow these s
     ```
 
 ### Option 2: Manual Destruction:
-1. Navigate to each component directory and run Terraform destroy command:
+1. Destroy resources in VPC Peering Connection
     ```bash
-    cd vpc_peering
+    cd ../vpc_peering
     terraform destroy -auto-approve
+    ```
+2. Destroy resources in Application Load Balancer
+    ```bash
+    cd ../alb
+    terraform destroy -auto-approve
+    ```
+3. Destroy resources in Development Webservers
+    ```bash
     cd ../dev/webservers
     terraform destroy -auto-approve
-    cd ../network
-    terraform destroy -auto-approve
-    cd ../../prod/webservers
-    terraform destroy -auto-approve
+    ```
+4. Destroy resources in Development Network
+    ```bash
     cd ../network
     terraform destroy -auto-approve
     ```
-
+5. Destroy resources in Production Webservers
+    ```bash
+    cd ../../prod/webservers
+    terraform destroy -auto-approve
+    ```
+6. Destroy resources in Production Network
+    ```bash
+    cd ../network
+    terraform destroy -auto-approve
+    ```
 
 After destroying all components, you can optionally delete the S3 bucket and its contents used for storing Terraform state.
