@@ -3,6 +3,8 @@
 This Terraform project automates the deployment of a cloud network architecture consisting of multiple Virtual Private Clouds (VPCs), subnets, EC2 instances, and connectivity configurations. This README provides instructions for successfully deploying and cleaning up the architecture.
 ![Architecture Diagram](https://i.ibb.co/GFyp6DC/diagram.png)
 
+Video Demontration: https://youtu.be/0VgxzO2o3Bw
+
 ## Prerequisites
 
 Before deploying the infrastructure using Terraform, ensure the following pre-requisites are met:
